@@ -66,6 +66,7 @@ class Calculator extends React.Component {
 
   handleEqual() {
     try {
+      // eslint-disable-next-line
       const compute = new Function(`return ${this.state.text}`);
       const solution = Math.round(1000000 * compute()) / 1000000;
       this.setState({
