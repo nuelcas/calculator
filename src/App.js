@@ -2,7 +2,7 @@ import React from "react";
 import Calculator from "./calculator";
 import "./calculator.css";
 
-<div className="Calculator">
+<div className="app">
   <Calculator />
 </div>;
 
