@@ -17,6 +17,7 @@ body {
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   width: 300px;
+  height: auto;
 }
 
 .text-display {
@@ -47,7 +48,7 @@ body {
 button {
   position: relative;
   height: 60px;
-  width: 70px;
+  width: 72px;
   outline: 1px solid rgb(168, 163, 163);
   background-color: black;
   color: white;
@@ -62,16 +63,10 @@ button {
 #clear {
   background-color: #b22222;
   grid-column: span 2;
-  width: 144px;
-}
-
-#zero {
-  grid-column: span 2;
-  width: 144px;
+  width: 147px;
 }
 
 #equals {
-  height: 200%;
   background-color: #126180;
 }
 

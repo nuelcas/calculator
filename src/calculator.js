@@ -12,6 +12,7 @@ class Calculator extends React.Component {
     this.handleOperators = this.handleOperators.bind(this);
     this.handleEqual = this.handleEqual.bind(this);
     this.handleDecimal = this.handleDecimal.bind(this);
+    this.handleParenthesis = this.handleParenthesis.bind(this);
   }
   handleClick(event) {
     if (this.state.text.endsWith("-")) {
@@ -56,14 +57,6 @@ class Calculator extends React.Component {
     }
   }
 
-  /*handleEqual() {
-    let solution = Math.round(1000000 * eval(this.state.text)) / 1000000;
-    this.setState({
-      initialValue: String(solution),
-      text: String(solution),
-    });
-  }*/
-
   handleEqual() {
     try {
       // eslint-disable-next-line
@@ -71,7 +64,8 @@ class Calculator extends React.Component {
       const solution = Math.round(1000000 * compute()) / 1000000;
       this.setState({
         initialValue: String(solution),
-        text: String(solution),
+        text: this.state.text + "=" + String(solution),
+        // text: String(solution),
       });
     } catch (error) {
       // Handle any potential errors
@@ -82,6 +76,21 @@ class Calculator extends React.Component {
   handleDecimal(event) {
     let result = event.target.value;
     if (!this.state.initialValue.includes(".")) {
+      this.setState({
+        initialValue: this.state.initialValue + result,
+        text: this.state.text + result,
+      });
+    }
+  }
+
+  handleParenthesis(event) {
+    const result = event.target.value;
+    if (this.state.initialValue === "0") {
+      this.setState({
+        initialValue: result,
+        text: this.state.text + result,
+      });
+    } else {
       this.setState({
         initialValue: this.state.initialValue + result,
         text: this.state.text + result,
@@ -104,6 +113,7 @@ class Calculator extends React.Component {
             clearDisplay={this.clearDisplay}
             handleOperators={this.handleOperators}
             handleDecimal={this.handleDecimal}
+            handleParenthesis={this.handleParenthesis}
           />
         </div>
       </div>
@@ -165,6 +175,20 @@ class Button extends React.Component {
         </button>
         <button onClick={this.props.handleDecimal} id="decimal" value=".">
           .
+        </button>
+        <button
+          onClick={this.props.handleParenthesis}
+          id="left-parenthesis"
+          value="("
+        >
+          (
+        </button>
+        <button
+          onClick={this.props.handleParenthesis}
+          id="right-parenthesis"
+          value=")"
+        >
+          )
         </button>
       </div>
     );
