@@ -64,7 +64,7 @@ class Calculator extends React.Component {
       const solution = Math.round(1000000 * compute()) / 1000000;
       this.setState({
         initialValue: String(solution),
-        text: this.state.text + "=" + String(solution),
+        text: String(solution),
         // text: String(solution),
       });
     } catch (error) {
